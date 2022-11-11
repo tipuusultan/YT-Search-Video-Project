@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="hero">
+
+    <div class="row height d-flex justify-content-center align-items-center">
+
+      <div class="col-md-8 container">
+
+        <form class="search" method='GET' action='/search'>
+          <i class="fa fa-search"></i>
+          <input type="text" class="form-control" name='keyword' placeholder="Search for YouTube Video">
+          <button class="btn btn-primary">Search</button>
+        </form>
+        
+      </div>
+      
+    </div>
+</div>
+
+
+  {% endblock main %}
