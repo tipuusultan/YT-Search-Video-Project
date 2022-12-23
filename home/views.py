@@ -6,14 +6,46 @@ from pytube import YouTube
 def home(request):
     return render(request, 'home.html')
 
-def SearchResult(request):
+
+def SearchResult(request):  
+    
+    keyword = request.GET.get('keyword')
+    search = VideosSearch(keyword)
+    SearchData = search.result()['result']
+    search.next()
+    SearchData2 = search.result()['result']
+    if request.POST:    
+        print("request is post")
+
+        search.next()
+        SearchData3 = search.result()['result']
+
+        search.next()
+        SearchData4 = search.result()['result']
+
+        i = request.session.get('page')
+        pp = i + 1
+        request.session['page'] = pp
+        context = {
+        'data':SearchData3,
+        'data2':SearchData4,
+        'keyword':keyword ,
+        'page':pp
+        }
+        return render(request ,'partials/SearchResults2.html', context)
+
     keyword = request.GET['keyword']
     search = VideosSearch(keyword)
     SearchData = search.result()['result']
+    i=1
+    request.session['page'] = i
     context = {
         'data':SearchData,
-        'keyword':keyword
+        'data2':SearchData2,
+        'keyword':keyword ,
+        'page':i
         }
+    
     return render(request, 'SearchResults.html',context)
 
 def SingleVieo(request):

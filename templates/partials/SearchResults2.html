@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block main %}
-
 <div class='container mt-5'>
     <h5 class='text-center'>Search results for <b>{{keyword}}</b></h5>
 <div class='' style='display: flex; flex-flow: wrap;'>
@@ -19,10 +18,9 @@
           </div>
         </div>
       </div>
-      
+   
       {% endfor %}
 
-      
       {% for d in data2 %}
     
       <div class="card m-3" style="width: 21rem;">
@@ -39,18 +37,18 @@
         </div>
      
         {% endfor %}
+  
+
    
 </div>
-
 <div>
-  <form action="" method="POST" class="mb-3" >
+  <form action="" method="POST" >
     {% csrf_token %}
-    <input type="hidden" value="{{keyword}}" name="keyword">
-    <button hx-post="{% url 'SearchResult' %}" class="btn btn-primary">Next - {{page}}</button>
+    <button hx-get="{% url 'SearchResult' %}" class="btn btn-primary">Next - {{page}}</button>
   </form>
+ 
 </div>
-
-
+   
 </div>
 
   {% endblock main %}

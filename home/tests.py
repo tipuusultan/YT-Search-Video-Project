@@ -1,20 +1,20 @@
 from django.test import TestCase
 
 # Create your tests here.
-from youtubesearchpython import *
+# from youtubesearchpython import *
 
-channel_id = "UCUE5IBoxWDeSFmBKAlKgfpQ"
-playlist = Playlist(playlist_from_channel_id(channel_id))
+# channel_id = "UCUE5IBoxWDeSFmBKAlKgfpQ"
+# playlist = Playlist(playlist_from_channel_id(channel_id))
 
-print(f'Videos Retrieved: {playlist.videos}')
+# print(f'Videos Retrieved: {playlist.videos}')
 
-while playlist.hasMoreVideos:
-    print('Getting more videos...')
-    playlist.getNextVideos()
-    print(f'Videos Retrieved: {playlist.videos}')
-    print(playlist.videos)
+# while playlist.hasMoreVideos:
+#     print('Getting more videos...')
+#     playlist.getNextVideos()
+#     print(f'Videos Retrieved: {playlist.videos}')
+#     print(playlist.videos)
 
-print('Found all the videos.')
+# print('Found all the videos.')
 
 # from youtubesearchpython import *
 
@@ -30,3 +30,9 @@ print('Found all the videos.')
 #     print(f'Comments Retrieved: {len(comments.comments["result"])}')
 
 # print('Found all the comments.')
+
+
+from pytube import Search
+s = Search('How to earn money')
+for i in s.results:
+    print(i)
